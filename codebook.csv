@@ -1,0 +1,130 @@
+feature name,comments,ML comments
+studycode,"1=kendall1994
+2=kendall1997
+3=kendall2008
+4=CAMS trial
+5=Villabo
+6=Wood
+7=Bodden
+8=Nauta
+9=Silverman",do 1-hot encoder
+txcond,"0=waitlist
+1 = icbt (individual CBT)
+2= fcbt (family CBT)
+3= icbt+srt (individual CBT + medication)
+4=srt (medication)
+5= pill placebo
+6=group cbt 
+7=CBT + parent training
+8=CBT/P",treatment type. Do 1-hot encoder
+txbinary,"0=placebo
+1=treatment",exclude from ML model
+txsessions,,number of sessions they went through
+txwithdraw,"0 = no withdraw
+1 = yes withdrew
+2 = withdrew before study started","did they withdraw from the study; use 1s as test; Not using, 
+just using it to remove data"
+childage,,
+childsex,,
+childracecomb,"1=white
+2=black
+3=asian
+4=Native Hawaiian/other pacific islander
+5=American Indian
+6=Other","combine 4,5 and 6 into others, then use 3 features and 0 on all is this combination"
+childethn,"0=non-hispanic
+1=hispanic",
+p1educ2,"0=less than high school
+1 = high school grad 
+2 = some college
+3 = grad training",
+p2educ2,"0=less than high school
+1 = high school grad 
+2 = some college
+3 = grad training",
+pre_cbcl_p1_anxdep,,All cbcl features are t-scores
+pre_cbcl_p1_wthdr,,
+pre_cbcl_p1_som,,
+pre_cbcl_p1_socprob,,
+pre_cbcl_p1_thought,,
+pre_cbcl_p1_attn,,
+pre_cbcl_p1_rulebrk,,
+pre_cbcl_p1_aggrs,,
+pre_cbcl_p1_int,,
+pre_cbcl_p1_ex,,
+pre_cbcl_p1_totprob,,
+pre_cbcl_p1_activities,,
+pre_cbcl_p1_social,,
+pre_cbcl_p1_school,,
+pre_cbcl_p1_tot,,
+pre_cbcl_p1_affprob,,
+pre_cbcl_p1_anxprob,,
+pre_cbcl_p1_somprob,,
+pre_cbcl_p1_adhdprob,,
+pre_cbcl_p1_oddprob,,
+pre_cbcl_p1_condprob,,
+pre_cbcl_p1_slugcog,,
+pre_cbcl_p1_ocdprob,,
+pre_cbcl_p1_ptsprob,,
+CHILD DIAGNOSTIC INFORMATION,,
+pre_compcsr_sep_dsm4,Composite diagnosis clinical severity rating - Separation Anxiety Disorder, 0-8 (8 means more severe). If it's 888: get max of pre_pcsr_sep_dsm4 and pre_ccsr_sep_dsm4
+pre_compcsr_soc_dsm4,,If it's 888: get max of pre_pcsr_soc_dsm4 and pre_ccsr_soc_dsm4
+pre_compcsr_sp_dsm4,,If 888: compose as a max of all pre_ccsr_spX_dsm4 and all pre_pcsr_spX_dsm4
+pre_compcsr_panic_dsm4,,If it's 888: get max of pre_pcsr_panic_dsm4 and pre_ccsr_panic_dsm4
+pre_compcsr_agor_dsm4,,This and next columns should be combined in the same way the above column is combined
+pre_compcsr_panicagor_dsm4,,
+pre_compcsr_gad_dsm4,,
+pre_compcsr_ocd_dsm4,,
+pre_compcsr_ptsd_dsm4,,
+pre_compcsr_dysthymia_dsm4,,
+pre_compcsr_mdd_dsm4,,
+pre_compcsr_adhd_dsm4,,
+pre_compcsr_cd_dsm4,,
+pre_compcsr_odd_dsm4,,
+pre_compcsr_sm_dsm4,,
+pre_compcsr_enur_dsm4,,
+pre_compcsr_slpterr_dsm4,,
+pre_compcsr_subabuse_dsm4,,
+pre_compcsr_bp_dsm4,,
+pre_compcsr_sz_dsm4,,
+pre_compcsr_eatingdo_dsm4,,
+pre_compcsr_mddpast_dsm4,,
+pre_compcsr_dysthymiapast_dsm4,,
+pre_compcsr_pdd_dsm4,,
+pre_compcsr_tour_dsm4,,
+PARENT DIAGNOSTIC INFO,,
+parent1_soc,"Parent 1, social anxiety diagnosis, clinical severity rating (0-8; 8 more severe)",
+parent1_sp1,,
+parent1_sp2,,
+parent1_sp3,,
+parent1_sp4,,
+parent1_panic,,
+parent1_agor,,
+parent1_panicagor,,
+parent1_gad,,
+parent1_ocd,,
+parent1_ptsd,,
+parent1_dysthymia,,
+parent1_mdd,,
+parent1_adhd,,
+parent1_subuse,,
+parent1_other,,
+parent2_soc,,
+parent2_sp1,,
+parent2_sp2,,
+parent2_sp3,,
+parent2_panic,,
+parent2_agor,,
+parent2_panicagor,,
+parent2_gad,,
+parent2_ocd,,
+parent2_ptsd,,
+parent2_dysthymia,,
+parent2_mdd,,
+parent2_adhd,,
+parent2_subuse,,
+parent2_other,,
+POST-TREATMENT DIAGNOSTIC INFORMATION,,
+post_compcsr_sep_dsm4,Composite diagnosis clinical severity rating - Separation Anxiety Disorder, 0-8 (8 means more severe). If it's 888: get max of post_pcsr_sep_dsm4 and post_ccsr_sep_dsm4
+post_compcsr_soc_dsm4,,If it's 888: get max of post_pcsr_soc_dsm4 and post_ccsr_soc_dsm4
+post_compcsr_gad_dsm4,,

@@ -1,0 +1,152 @@
+feature name,comments,ML comments,Missingness cause
+studycode,"1=kendall1994
+2=kendall1997
+3=kendall2008
+4=CAMS trial
+5=Villabo
+6=Wood
+7=Bodden
+8=Nauta
+9=Silverman",do 1-hot encoder,Not missing
+txcond,"0=waitlist
+1 = icbt (individual CBT)
+2= fcbt (family CBT)
+3= icbt+srt (individual CBT + medication)
+4=srt (medication)
+5= pill placebo
+6=group cbt 
+7=CBT + parent training
+8=CBT/P",treatment type. Do 1-hot encoder,Not missing
+txbinary,"0=placebo
+1=treatment",exclude from ML model,Not missing
+txsessions,,number of sessions they went through,Not missing
+txwithdraw,"0 = no withdraw
+1 = yes withdrew
+2 = withdrew before study started","did they withdraw from the study; use 1s as test; Not using, 
+just using it to remove data",Not missing
+childage,,,Random
+childsex,,,Covering only binary – might not reflect the real distribution
+childracecomb,"1=white
+2=black
+3=asian
+4=Native Hawaiian/other pacific islander
+5=American Indian
+6=Other","combine 4,5 and 6 into others, then use 3 features and 0 on all is this combination","Not missing. Three ethnicities only: white, black, other"
+childethn,"0=non-hispanic
+1=hispanic",,Not missing. Ethnicity not known in non-US studies
+p1educ2,"0=less than high school
+1 = high school grad 
+2 = some college
+3 = grad training",,Not collected in all trials or parent not appearing
+p2educ2,"0=less than high school
+1 = high school grad 
+2 = some college
+3 = grad training",,Not collected in all trials or parent not appearing
+pre_cbcl_p1_anxdep,,All cbcl features are t-scores,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_wthdr,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_som,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_socprob,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_thought,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_attn,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_rulebrk,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_aggrs,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_int,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_ex,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_totprob,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_activities,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_social,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_school,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_tot,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_affprob,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_anxprob,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_somprob,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_adhdprob,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_oddprob,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_condprob,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_slugcog,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_ocdprob,,,Trial didn’t collect the data or people miss the question
+pre_cbcl_p1_ptsprob,,,Trial didn’t collect the data or people miss the question
+CHILD DIAGNOSTIC INFORMATION,,,Trial didn’t collect the data or people miss the question
+pre_compcsr_sep_dsm4,Composite diagnosis clinical severity rating - Separation Anxiety Disorder, 0-8 (8 means more severe). If it's 888: get max of pre_pcsr_sep_dsm4 and pre_ccsr_sep_dsm4,Child diagnosis composed out of parent and child response (shouldn’t be missing much)
+pre_compcsr_soc_dsm4,,If it's 888: get max of pre_pcsr_soc_dsm4 and pre_ccsr_soc_dsm4,Random missingness
+pre_compcsr_sp_dsm4,,If 888: compose as a max of all pre_ccsr_spX_dsm4 and all pre_pcsr_spX_dsm4,Random missingness
+pre_compcsr_panic_dsm4,,If it's 888: get max of pre_pcsr_panic_dsm4 and pre_ccsr_panic_dsm4,Random missingness
+pre_compcsr_agor_dsm4,,This and next columns should be combined in the same way the above column is combined,Random missingness
+pre_compcsr_panicagor_dsm4,,,Random missingness
+pre_compcsr_gad_dsm4,,,Random missingness
+pre_compcsr_ocd_dsm4,,,Random missingness
+pre_compcsr_ptsd_dsm4,,,Random missingness
+pre_compcsr_dysthymia_dsm4,,,Random missingness
+pre_compcsr_mdd_dsm4,,,Random missingness
+pre_compcsr_adhd_dsm4,,,Random missingness
+pre_compcsr_cd_dsm4,,,Random missingness
+pre_compcsr_odd_dsm4,,,Random missingness
+pre_compcsr_sm_dsm4,,,Random missingness
+pre_compcsr_enur_dsm4,,,Random missingness
+pre_compcsr_slpterr_dsm4,,,Random missingness
+pre_compcsr_subabuse_dsm4,,,Random missingness
+pre_compcsr_bp_dsm4,,,Random missingness
+pre_compcsr_sz_dsm4,,,Random missingness
+pre_compcsr_eatingdo_dsm4,,,Random missingness
+pre_compcsr_mddpast_dsm4,,,Random missingness
+pre_compcsr_dysthymiapast_dsm4,,,Random missingness
+pre_compcsr_pdd_dsm4,,,Random missingness
+pre_compcsr_tour_dsm4,,,Random missingness
+PARENT DIAGNOSTIC INFO,,,Diagnostic info based on parent responses during the interview
+parent1_soc,"Parent 1, social anxiety diagnosis, clinical severity rating (0-8; 8 more severe)",,Trial didn’t collect the data or people miss the question
+parent1_sp1,,,Trial didn’t collect the data or people miss the question
+parent1_sp2,,,Trial didn’t collect the data or people miss the question
+parent1_sp3,,,Trial didn’t collect the data or people miss the question
+parent1_sp4,,,Trial didn’t collect the data or people miss the question
+parent1_panic,,,Trial didn’t collect the data or people miss the question
+parent1_agor,,,Trial didn’t collect the data or people miss the question
+parent1_panicagor,,,Trial didn’t collect the data or people miss the question
+parent1_gad,,,Trial didn’t collect the data or people miss the question
+parent1_ocd,,,Trial didn’t collect the data or people miss the question
+parent1_ptsd,,,Trial didn’t collect the data or people miss the question
+parent1_dysthymia,,,Trial didn’t collect the data or people miss the question
+parent1_mdd,,,Trial didn’t collect the data or people miss the question
+parent1_adhd,,,Trial didn’t collect the data or people miss the question
+parent1_subuse,,,Trial didn’t collect the data or people miss the question
+parent1_other,,,Trial didn’t collect the data or people miss the question
+parent2_soc,,,"Rarely available, but important; it only exist when both parents were included in the study"
+parent2_sp1,,,"Rarely available, but important; it only exist when both parents were included in the study"
+parent2_sp2,,,"Rarely available, but important; it only exist when both parents were included in the study"
+parent2_sp3,,,"Rarely available, but important; it only exist when both parents were included in the study"
+parent2_panic,,,"Rarely available, but important; it only exist when both parents were included in the study"
+parent2_agor,,,"Rarely available, but important; it only exist when both parents were included in the study"
+parent2_panicagor,,,"Rarely available, but important; it only exist when both parents were included in the study"
+parent2_gad,,,"Rarely available, but important; it only exist when both parents were included in the study"
+parent2_ocd,,,"Rarely available, but important; it only exist when both parents were included in the study"
+parent2_ptsd,,,"Rarely available, but important; it only exist when both parents were included in the study"
+parent2_dysthymia,,,"Rarely available, but important; it only exist when both parents were included in the study"
+parent2_mdd,,,"Rarely available, but important; it only exist when both parents were included in the study"
+parent2_adhd,,,"Rarely available, but important; it only exist when both parents were included in the study"
+parent2_subuse,,,"Rarely available, but important; it only exist when both parents were included in the study"
+parent2_other,,,"Rarely available, but important; it only exist when both parents were included in the study"
+POST-TREATMENT DIAGNOSTIC INFORMATION,,,"Rarely available, but important; it only exist when both parents were included in the study"
+post_compcsr_sep_dsm4,Composite diagnosis clinical severity rating - Separation Anxiety Disorder, 0-8 (8 means more severe). If it's 888: get max of post_pcsr_sep_dsm4 and post_ccsr_sep_dsm4,"Predicting only yellow soc, sep and gad and they are missing randomly"
+post_compcsr_soc_dsm4,,If it's 888: get max of post_pcsr_soc_dsm4 and post_ccsr_soc_dsm4,
+post_compcsr_sp_dsm4,,If 888: compose as a max of all post_ccsr_spX_dsm4 and all post_pcsr_spX_dsm4,
+post_compcsr_panic_dsm4,,If it's 888: get max of post_pcsr_panic_dsm4 and post_ccsr_panic_dsm4,
+post_compcsr_agor_dsm4,,This and next columns should be combined in the same way the above column is combined,
+post_compcsr_panicagor_dsm4,,,
+post_compcsr_gad_dsm4,,,
+post_compcsr_ocd_dsm4,,,
+post_compcsr_ptsd_dsm4,,,
+post_compcsr_dysthymia_dsm4,,,
+post_compcsr_mdd_dsm4,,,
+post_compcsr_adhd_dsm4,,,
+post_compcsr_cd_dsm4,,,
+post_compcsr_odd_dsm4,,,
+post_compcsr_sm_dsm4,,,
+post_compcsr_enur_dsm4,,,
+post_compcsr_slpterr_dsm4,,,
+post_compcsr_subabuse_dsm4,,,
+post_compcsr_bp_dsm4,,,
+post_compcsr_sz_dsm4,,,
+post_compcsr_eatingdo_dsm4,,,
+post_compcsr_mddpast_dsm4,,,
+post_compcsr_dysthymiapast_dsm4,,,
+post_compcsr_pdd_dsm4,,,
+post_compcsr_tour_dsm4,,,
